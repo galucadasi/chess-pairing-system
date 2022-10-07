@@ -30,9 +30,9 @@ REGEX_TABLE = r'(?P<table>\d+) (?P<player1>[\w ]+) (\d+\.\d) (?P<result>1-0|0-1|
 #Interacao com o usuario
 def main_menu():
   #recolhe o numero de usuarios
-  num_players = int(input('Número de jogadores:')
+  num_players = int(input('Número de jogadores:'))
   # rating = int(input(''))
-return num_players
+  return num_players
 
 #Recolhe o rating does jogadores
 def get_rating_player(num_players,player_list_rating, list_players):
@@ -60,9 +60,16 @@ def get_results(pdf_text, num_players):
   pdf_lines = pdf_text.split('\n')
   lines=0
 
-  while lines < num_players:
+  #Adicionar o sistema que compreende o que é uma linha valida
+  pdf_lines_1char = pdf_lines[num_players].split()
+  print (pdf_lines_1char)
+  """
+  if isinstance(pdf_lines_1char, int):
+    print('Is integer')
+  """
+while lines < num_players:
 #add an if to check if it is the first round to get the players
-    match = re.match(REGEX_TABLE, pdf_lines[5])
+    match = re.match(REGEX_TABLE, pdf_lines[num_players])
     
     print(match)
     player1= match.group('player1')

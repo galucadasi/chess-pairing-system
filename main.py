@@ -67,11 +67,10 @@ def get_results(pdf_text, num_players):
   if isinstance(pdf_lines_1char, int):
     print('Is integer')
   """
-while lines < num_players:
+  while lines < num_players:
 #add an if to check if it is the first round to get the players
-    match = re.match(REGEX_TABLE, pdf_lines[num_players])
+    match = re.match(REGEX_TABLE, pdf_lines[7])
     
-    print(match)
     player1= match.group('player1')
     player2= match.group('player2')
     result = match.group('result')
@@ -88,12 +87,12 @@ while lines < num_players:
       player1_res = 10
       player2_res = 10
       print('Not found result')
-    lines = lines+1
+      lines =+1
+    list_player1_res.append(player1_res)
+    list_player2_res.append(player2_res)    
 
-  list_player1_res.append(player1_res)
-  list_player2_res.append(player2_res)    #list_players.append(player1,player2)
-
-  return list_player1_res, list_player2_res, list_players
+#list_players.append(player1,player2)
+    return list_player1_res, list_player2_res, list_players
 
 #Recebe o resultado e os ratings é devolve a variação 
 """
@@ -109,7 +108,8 @@ def main():
   path = './axs30.pdf'
   #Chama a função que extrai o texto do pdf
   pdf_text = extract_information(path)
-  print(pdf_text)
+  #print(pdf_text)
+  
   #Chama a função que recebe as informações base do usuario
   num_players = main_menu()
   #Isso realmente converte para uma int?

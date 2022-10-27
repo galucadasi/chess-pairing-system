@@ -91,8 +91,6 @@ def calc_rating(games, ratings):
 
       delta_rating += round((result - probability(rating2, rating1)) * K,  1)
 
-      print('probability(', rating2, rating1, ') #', probability(rating2, rating1), '->', result)
-      print(delta_rating)
     rating_final[name] = rating1 + delta_rating
   return rating_final
 
